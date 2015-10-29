@@ -2,40 +2,69 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
 
-/*
- * You will need to reuse the same paths many times over in the course of this sprint.
- * Consider using the `paths` object below to store frequently used file paths. This way,
- * if you move any files, you'll only need to change your code in one place! Feel free to
- * customize it in any way you wish.
- */
-
 exports.paths = {
   siteAssets: path.join(__dirname, '../web/public'),
-  archivedSites: path.join(__dirname, '../archives/sites'),
-  list: path.join(__dirname, '../archives/sites.txt')
-};
+  archivedSites: path.join(__dirname, '../archives/sites'),  // iZOMBIE : "this path module allows us to replace paths like archives/sites/ with archivedSites (ie. could be useful in the https-helpers.js file.) 
+  list: path.join(__dirname, '../archives/sites/sites.txt') 
+}; // iZOMBIE: 'updated path assginment. 4:49PM'
 
-// Used for stubbing paths for tests, do not modify
-exports.initialize = function(pathsObj){
+// Used for tests, DO NOT MODIFY.
+exports.initialize = function(pathsObj){ 
   _.each(pathsObj, function(path, type) {
     exports.paths[type] = path;
-  });
-};
+  }); 
+}; 
 
-// The following function names are provided to you to suggest how you might
-// modularize your code. Keep it clean!
+// Functions to suggest how to modularize code. Keep it clean!
 
 exports.readListOfUrls = function(){
+    // read ../archives/sites/sites.text 
+    fs.readFile(list, 'utf8', isURLInList);
+//
 };
 
-exports.isUrlInList = function(){
+exports.isUrlInList = function(err, data){
+  var bool = false; 
+  // if (_.indexOf(data,inputURL) !== -1) { //if inputURL is present in data...
+    bool = true; //flip the bool to true
+  // }  
+  return bool; //returns a boolean
 };
 
 exports.addUrlToList = function(){
+  //append url to sites.txt
 };
 
-exports.isUrlArchived = function(){
+//when user submits URL
+exports.isUrlArchived = function(targetURL){
+  // var bool = false 
+  readListOfUrls;
+
+  //if targetURL url in list?
+    //list of urls 
+
+      //if not, add the url'
+  //returns a boolean
+
 };
 
 exports.downloadUrls = function(){
+
 };
+
+
+
+//NOTE: 
+//this could be useful:
+//fs.watchFile(filename[, options], listener)#
+
+// Watch for changes on filename. The callback listener will be called each time the file is accessed.
+
+// The options argument may be omitted. If provided, it should be an object. The options object may contain a boolean named persistent that indicates whether the process should continue to run as long as files are being watched. The options object may specify an interval property indicating how often the target should be polled in milliseconds. The default is { persistent: true, interval: 5007 }.
+
+
+
+
+
+
+

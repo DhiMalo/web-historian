@@ -10,7 +10,7 @@ var port = 8080;
 var ip = "127.0.0.1";
 var server = http.createServer(handler.handleRequest);
 
-if (module.parent) {
+if (module.parent) { //if this is one of multiple basic-server instances
   module.exports = server;
 } else {
   server.listen(port, ip);

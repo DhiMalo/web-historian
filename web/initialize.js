@@ -21,3 +21,12 @@ module.exports = function () {
     fs.mkdirSync("./archives/sites");
   }
 };
+
+
+//From http://www.sitepoint.com/accessing-the-file-system-in-node-js/:
+//"the exists() function determines if the file “foo.txt” exists.":
+//code snippet: var fs = require("fs");
+// var fileName = "foo.txt";
+
+// fs.exists(fileName, function(exists) {
+//   if (exists) {...
