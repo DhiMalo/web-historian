@@ -19,13 +19,17 @@ exports.initialize = function(pathsObj){
 
 exports.readListOfUrls = function(){
     // read ../archives/sites/sites.text 
-    fs.readFile(list, 'utf8', isURLInList);
+    fs.readFile(paths.list, 'utf8', function(err, data){
+      data.toString.split('');
+    });
 //
 };
 
 exports.isUrlInList = function(err, data){
   var bool = false; 
-  // if (_.indexOf(data,inputURL) !== -1) { //if inputURL is present in data...
+  fs.appendFile(data, function(){
+
+  });
     bool = true; //flip the bool to true
   // }  
   return bool; //returns a boolean

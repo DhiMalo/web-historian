@@ -6,26 +6,30 @@ var helpers = require('./http-helpers.js');
 
 
 exports.handleRequest = function (request, response) {
-
+  var status = status || 200;
   if (request.method === 'GET' && request.url === '/') {
-    fs.readFile('/Users/student/Desktop/2015-10-web-historian/web/public/index.html', function (err, data) { //if not in same folder, make sure to use ..
-      response.writeHead(200, headers);
-      //response.write(data);
-      response.end(data);
-  });
-  
-  
-
-  } else if (request.method === 'GET'){
-    //if previously archived...
+    fs.readFile('/Users/student/Desktop/2015-10-web-historian/web/public/index.html', function (err, data) {
+      response.writeHead(status, headers);
+        response.end(data);
+      });
+  } else if (request.method === 'GET' && request.url !== '/') {
+      // if(exports.isUrlArchived(request.url)){
+      // }
+    //if request.url is located in sites.txt 
+      //use htmlfetcher to scrape the webpage
     //else if not in archive
       //then downloadURLS (see archive-helpers);
-    
-  } else if (request.method === 'POST'){
-    
-    //
+      response.writeHead(status, headers);
+      response.end();
+    } else if (request.method === 'POST'){
+      var data = helpers.receiveData();
+      console.log('this is data', data);
+      // exports.addUrlToList(request.url)
+      response.writeHead(status, headers);
+      response.end();
+  
   }
 
-  //response.end(archive.paths.list);
+  
 };
 
