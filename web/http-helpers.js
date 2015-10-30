@@ -26,8 +26,10 @@ exports.receiveData = function (request, response) {
   var data = '';
   request.on('data', function (chunk) {
     data += chunk;
+    console.log('Currently receiving data:', data);
   });
   request.on('end', function() {
+    console.log('at end, we have received this data:', data);
     return data;
   });
 };

@@ -22,8 +22,8 @@ exports.handleRequest = function (request, response) {
       response.writeHead(status, headers);
       response.end();
     } else if (request.method === 'POST'){
-      var data = helpers.receiveData();
-      console.log('this is data', data);
+      var url = helpers.receiveData(request, response);
+      console.log('this is the client-submitted url:', url);
       // exports.addUrlToList(request.url)
       response.writeHead(status, headers);
       response.end();

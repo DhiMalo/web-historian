@@ -19,10 +19,11 @@ exports.initialize = function(pathsObj){
 
 exports.readListOfUrls = function(){
     // read ../archives/sites/sites.text 
-    fs.readFile(paths.list, 'utf8', function(err, data){
-      data.toString.split('');
+      fs.readFile(paths.list, 'utf8', function(err, data){
+      //push data into array
+      var dataArray = data.toString.split('\n');
+      console.log('dataSet, an array, is:', dataSet);
     });
-//
 };
 
 exports.isUrlInList = function(err, data){
@@ -52,8 +53,8 @@ exports.isUrlArchived = function(targetURL){
 
 };
 
-exports.downloadUrls = function(){
-
+exports.downloadUrls = function(dataURL){
+  fs.writeFile('')
 };
 
 
